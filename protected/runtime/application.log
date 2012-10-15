@@ -65,3 +65,53 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/yii/shop_yii/index.php?r=user\admin
 ---
+2012/10/15 21:40:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop.tbl_user' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `tbl_user`.
+in C:\xampp\htdocs\yii\shop_yii\protected\controllers\UserController.php (136)
+in C:\xampp\htdocs\yii\shop_yii\index.php (13)
+2012/10/15 21:40:10 [error] [exception.CDbException] exception 'CDbException' with message 'The table "tbl_user" for active record class "User" cannot be found in the database.' in C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php:2312
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(388): CActiveRecordMetaData->__construct(Object(User))
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(403): CActiveRecord::model('User')
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(78): CActiveRecord->getMetaData()
+#3 C:\xampp\htdocs\yii\shop_yii\protected\controllers\UserController.php(136): CActiveRecord->__construct('search')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(50): UserController->actionAdmin()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('admin')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('user/admin')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\yii\shop_yii\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/shop_yii/index.php?r=user/admin
+HTTP_REFERER=http://127.0.0.1/yii/shop_yii/index.php?r=user
+---
+2012/10/15 21:42:01 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop.tbl_user' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `tbl_user`.
+in C:\xampp\htdocs\yii\shop_yii\protected\controllers\UserController.php (125)
+in C:\xampp\htdocs\yii\shop_yii\index.php (13)
+2012/10/15 21:42:01 [error] [exception.CDbException] exception 'CDbException' with message 'The table "tbl_user" for active record class "User" cannot be found in the database.' in C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php:2312
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(388): CActiveRecordMetaData->__construct(Object(User))
+#1 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(75): CActiveRecord::model('User')
+#2 C:\xampp\htdocs\yii\shop_yii\protected\controllers\UserController.php(125): CActiveDataProvider->__construct('User')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(50): UserController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('user')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\yii\shop_yii\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/yii/shop_yii/index.php?r=user
+---
