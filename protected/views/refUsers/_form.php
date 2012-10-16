@@ -39,17 +39,23 @@
 		<?php echo $form->error($model,'login'); ?>
 	</div>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password',array('size'=>32,'maxlength'=>32)); ?>
 		<?php echo $form->error($model,'password'); ?>
-	</div>
+	</div>-->
+        
+        <div class="row">
+            <?php echo $form->labelEx($model,'password2'); ?>
+            <?php echo $form->passwordField($model,'password2'); ?>
+            <?php echo $form->error($model,'password2'); ?>
+        </div>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->labelEx($model,'salt'); ?>
 		<?php echo $form->textField($model,'salt',array('size'=>3,'maxlength'=>3)); ?>
 		<?php echo $form->error($model,'salt'); ?>
-	</div>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

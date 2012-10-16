@@ -14,6 +14,7 @@
  */
 class RefUsers extends CActiveRecord
 {
+    public $password2;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -40,15 +41,19 @@ class RefUsers extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ref, removal_mark, name', 'required'),
+			array('removal_mark, name', 'required'),
+			//array('ref, removal_mark, name', 'required'),
 			array('removal_mark', 'numerical', 'integerOnly'=>true),
-			array('ref', 'length', 'max'=>40),
+			//array('ref', 'length', 'max'=>40),
 			array('name, login', 'length', 'max'=>50),
 			array('password', 'length', 'max'=>32),
-			array('salt', 'length', 'max'=>3),
+			//array('salt', 'length', 'max'=>3),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, ref, removal_mark, name, login, password, salt', 'safe', 'on'=>'search'),
+			//array('id, ref, removal_mark, name, login, password, salt', 'safe', 'on'=>'search'),
+			array('id, removal_mark, name, login, password', 'safe', 'on'=>'search'),
+                    
+                        array('password2', 'safe'),
 		);
 	}
 
@@ -70,12 +75,12 @@ class RefUsers extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'ref' => 'Ref',
-			'removal_mark' => 'Removal Mark',
-			'name' => 'Name',
-			'login' => 'Login',
-			'password' => 'Password',
-			'salt' => 'Salt',
+			//'ref' => 'Ref',
+			'removal_mark' => 'Пометка удаления',
+			'name' => 'Имя',
+			'login' => 'Логин',
+			'password' => 'Пароль',
+			//'salt' => 'Salt',
 		);
 	}
 
@@ -91,15 +96,40 @@ class RefUsers extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('ref',$this->ref,true);
+		//$criteria->compare('ref',$this->ref,true);
 		$criteria->compare('removal_mark',$this->removal_mark);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('login',$this->login,true);
 		$criteria->compare('password',$this->password,true);
-		$criteria->compare('salt',$this->salt,true);
+		//$criteria->compare('salt',$this->salt,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+        
+    protected function beforeValidate()
+    {
+        if (empty($this->salt))
+        {
+            $this->salt = $this->makeSalt();
+        }
+         if (empty($this->password))
+        {
+            $this->password = md5(md5($this->password2) . $this->salt);
+        }
+        return parent::beforeValidate();
+    }
+ 
+    private function makeSalt()
+    {
+        $n = 3;
+        $key = '';
+        $pattern = '1234567890abcdefghijklmnopqrstuvwxyz.,*_-=+';
+        $counter = strlen($pattern) - 1;
+        for ($i = 0; $i < $n; $i++) {
+            $key .= $pattern{rand(0, $counter)};
+        }
+        return $key;
+    }
 }
