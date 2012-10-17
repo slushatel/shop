@@ -3,13 +3,13 @@
 /* @var $model RefUsers */
 
 $this->breadcrumbs=array(
-	'Ref Users'=>array('index'),
-	'Manage',
+	'Пользователи'=>array('index'),
+	'Обработать',
 );
 
 $this->menu=array(
-	array('label'=>'List RefUsers', 'url'=>array('index')),
-	array('label'=>'Create RefUsers', 'url'=>array('create')),
+	array('label'=>'Список пользователей', 'url'=>array('index')),
+	array('label'=>'Создать пользователя', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,14 +26,14 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Ref Users</h1>
+<h1>Обработать пользователей</h1>
 
 <p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+Можно использовать операторы сравнения (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+или <b>=</b>) перед значением поиска для изменения результата поиска.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<?php echo CHtml::link('Расширенный поиск','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -50,10 +50,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'removal_mark',
 		'name',
 		'login',
-		'password',
-		/*
-		'salt',
-		*/
+		//'password',
+		//'salt',
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

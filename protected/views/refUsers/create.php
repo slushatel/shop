@@ -3,16 +3,16 @@
 /* @var $model RefUsers */
 
 $this->breadcrumbs=array(
-	'Ref Users'=>array('index'),
-	'Create',
+	'Пользователи'=>array('index'),
+	'Создание',
 );
 
 $this->menu=array(
-	array('label'=>'List RefUsers', 'url'=>array('index')),
-	array('label'=>'Manage RefUsers', 'url'=>array('admin')),
+	array('label'=>'Список пользователей', 'url'=>array('index')),
+	array('label'=>'Обработать пользователей', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create RefUsers</h1>
+<h1>Создать пользователя</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

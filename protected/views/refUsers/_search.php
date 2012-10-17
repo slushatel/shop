@@ -16,10 +16,10 @@
 		<?php echo $form->textField($model,'id'); ?>
 	</div>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->label($model,'ref'); ?>
 		<?php echo $form->textField($model,'ref',array('size'=>40,'maxlength'=>40)); ?>
-	</div>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->label($model,'removal_mark'); ?>
@@ -36,13 +36,13 @@
 		<?php echo $form->textField($model,'login',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->label($model,'salt'); ?>
 		<?php echo $form->textField($model,'salt',array('size'=>3,'maxlength'=>3)); ?>
-	</div>
+	</div>-->
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+		<?php echo CHtml::submitButton(Yii::t('shop','Search')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

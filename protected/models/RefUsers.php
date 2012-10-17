@@ -100,7 +100,7 @@ class RefUsers extends CActiveRecord
 		$criteria->compare('removal_mark',$this->removal_mark);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('login',$this->login,true);
-		$criteria->compare('password',$this->password,true);
+		//$criteria->compare('password',$this->password,true);
 		//$criteria->compare('salt',$this->salt,true);
 
 		return new CActiveDataProvider($this, array(

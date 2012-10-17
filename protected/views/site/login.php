@@ -3,15 +3,15 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
+$this->pageTitle=Yii::app()->name . ' - Вход';
 $this->breadcrumbs=array(
-	'Login',
+	'Вход',
 );
 ?>
 
-<h1>Login</h1>
+<h1>Вход</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+<p>Заполните форму данными Вашей учетной записи:</p>
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -22,7 +22,7 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Поля с пометкой <span class="required">*</span> обязательны.</p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
@@ -35,7 +35,7 @@ $this->breadcrumbs=array(
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
+			
 		</p>
 	</div>
 
@@ -46,7 +46,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton(Yii::t('shop', 'Login')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
