@@ -76,12 +76,13 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				/*
+				
 				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
-			),
+                                    'class' => 'CWebLogRoute',
+                                    'categories' => 'application',
+                                    'levels' => 'error, warning, trace, profile, info',
+                                ),
+        		),
 		),
 	),
 

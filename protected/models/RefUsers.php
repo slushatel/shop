@@ -53,7 +53,7 @@ class RefUsers extends CActiveRecord
 			//array('id, ref, removal_mark, name, login, password, salt', 'safe', 'on'=>'search'),
 			array('id, removal_mark, name, login, password', 'safe', 'on'=>'search'),
                     
-                        array('password2', 'safe'),
+            array('password2', 'safe'),
 		);
 	}
 
@@ -75,12 +75,12 @@ class RefUsers extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			//'ref' => 'Ref',
+			'ref' => 'Ссылка',
 			'removal_mark' => 'Пометка удаления',
 			'name' => 'Имя',
 			'login' => 'Логин',
 			'password' => 'Пароль',
-			//'salt' => 'Salt',
+			'salt' => 'Соль',
 		);
 	}
 
@@ -108,28 +108,39 @@ class RefUsers extends CActiveRecord
 		));
 	}
         
-    protected function beforeValidate()
-    {
-        if (empty($this->salt))
-        {
-            $this->salt = $this->makeSalt();
-        }
-         if (empty($this->password))
-        {
-            $this->password = md5(md5($this->password2) . $this->salt);
-        }
-        return parent::beforeValidate();
-    }
+    
+//     protected function beforeValidate()
+//    {
+//            
+//        die(CVarDumper::dumpAsString($this->salt.$this->password,3,true));
+//
+//        if (empty($this->salt))
+//        {
+//            $this->salt = $this->makeSalt();
+//        }
+//         if (empty($this->password))
+//        {
+//            $this->password = md5(md5($this->password2) . $this->salt);
+//        }
+//        return parent::beforeValidate();
+//    }
  
-    private function makeSalt()
-    {
-        $n = 3;
-        $key = '';
-        $pattern = '1234567890abcdefghijklmnopqrstuvwxyz.,*_-=+';
-        $counter = strlen($pattern) - 1;
-        for ($i = 0; $i < $n; $i++) {
-            $key .= $pattern{rand(0, $counter)};
-        }
-        return $key;
-    }
+  private function makeSalt() {
+	$n = 3;
+	$key = '';
+	$pattern = '1234567890abcdefghijklmnopqrstuvwxyz.,*_-=+';
+	$counter = strlen($pattern) - 1;
+	for ($i = 0; $i < $n; $i++) {
+	  $key .= $pattern{rand(0, $counter)};
+	}
+	return $key;
+  }
+
+  public function setAttributes($values, $safeOnly = true) {
+	parent::setAttributes($values, $safeOnly);
+	if (!empty($this->password2)) {
+	  $this->salt = $this->makeSalt();
+	  $this->password = md5(md5($this->password2) . $this->salt);
+	}
+  }
 }
