@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Vitrina',
-        'sourceLanguage'=>'en',
+        'sourceLanguage'=>'en_us',
         'language'=>'ru',
 
 	// preloading 'log' component

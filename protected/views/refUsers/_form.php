@@ -15,15 +15,20 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->labelEx($model,'ref'); ?>
 		<?php echo $form->textField($model,'ref',array('size'=>40,'maxlength'=>40)); ?>
 		<?php echo $form->error($model,'ref'); ?>
-	</div>
+	</div>-->
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->labelEx($model,'removal_mark'); ?>
 		<?php echo $form->textField($model,'removal_mark'); ?>
+		<?php echo $form->error($model,'removal_mark'); ?>
+	</div>-->
+	<div class="row">
+		<?php echo $form->labelEx($model,'removal_mark'); ?>
+		<?php echo $form->checkbox($model,'removal_mark'); ?>
 		<?php echo $form->error($model,'removal_mark'); ?>
 	</div>
 
