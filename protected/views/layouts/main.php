@@ -55,6 +55,16 @@
 		?>
 	</div><!-- footer -->
 
+	<?php 
+//	$dbStats = Yii::app()->db->getStats();
+//	echo 'Выполнено запросов: ' . $dbStats[0] . ' (за ' . round($dbStats[1], 5) . ' сек)';
+//	$memory = round(Yii::getLogger()->memoryUsage / 1024 / 1024, 3);
+//	$time = round(Yii::getLogger()->executionTime, 3);
+//	echo '<br />Использовано памяти: ' . $memory . ' МБ<br />';
+//	Yii::app()->end();
+//	echo 'Время выполнения: ' . $time . ' с<br />';
+	?>
+
 </div><!-- page -->
 
 </body>
