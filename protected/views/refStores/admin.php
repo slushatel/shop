@@ -51,12 +51,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'name',
 		'store_imagesmall_id',
 		'store_imagebig_id',
-		/*
+		
 		'store_address',
 		'store_phone',
 		'store_site_address',
 		'price_unvisible',
-		*/
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

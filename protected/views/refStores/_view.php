@@ -33,7 +33,6 @@
 	<?php echo CHtml::encode($data->store_address); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('store_phone')); ?>:</b>
 	<?php echo CHtml::encode($data->store_phone); ?>
 	<br />
@@ -45,7 +44,5 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('price_unvisible')); ?>:</b>
 	<?php echo CHtml::encode($data->price_unvisible); ?>
 	<br />
-
-	*/ ?>
 
 </div>

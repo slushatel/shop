@@ -71,15 +71,15 @@ class RefStores extends CActiveRecord {
   public function attributeLabels() {
     return array(
         'id' => 'ID',
-        'ref' => 'Ref',
-        'removal_mark' => 'Removal Mark',
-        'name' => 'Name',
+        'ref' => Yii::t('shop', 'Reference'),
+        'removal_mark' => Yii::t('shop', 'Removal mark'),
+        'name' => Yii::t('shop', 'Name'),
         'store_imagesmall_id' => 'Store Imagesmall',
         'store_imagebig_id' => 'Store Imagebig',
-        'store_address' => 'Store Address',
-        'store_phone' => 'Store Phone',
-        'store_site_address' => 'Store Site Address',
-        'price_unvisible' => 'Price Unvisible',
+        'store_address' => Yii::t('shop', 'Address'),
+        'store_phone' => Yii::t('shop', 'Phone'),
+        'store_site_address' => Yii::t('shop', 'Site'),
+        'price_unvisible' => Yii::t('shop', 'Price unvisible'),
     );
   }
 

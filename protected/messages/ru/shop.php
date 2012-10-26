@@ -10,4 +10,12 @@ return array (
   'Username' => 'Имя пользователя',
   'Password' => 'Пароль',
   'Remember me next time' => 'Запомнить меня',
+  
+  'Address' => 'Адрес',
+  'Name' => 'Название',
+  'Removal mark' => 'К удалению',  
+  'Reference' => 'Ссылка',  
+  'Phone' => 'Телефон',
+  'Site' => 'Сайт',  
+  'Price unvisible' => 'Не показывать прайс',      
 );

@@ -27,16 +27,16 @@ class RefStoresController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
+//			array('allow',  // allow all users to perform 'index' and 'view' actions
+//				'actions'=>array('index','view'),
+//				'users'=>array('*'),
+//			),
+//			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+//				'actions'=>array('create','update'),
+//				'users'=>array('@'),
+//			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('create','update','index','view','admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -168,4 +168,24 @@ class RefStoresController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+//   public function actionBatchUpdate() {
+//    // retrieve items to be updated in a batch mode
+//    // assuming each item is of model class 'Item'
+//    //$items = $this->getItemsToUpdate();
+//    $items =new RefStores();
+//    if (isset($_POST['RefStores'])) {
+//      $valid = true;
+//      foreach ($items as $i => $item) {
+//        if (isset($_POST['RefStores'][$i]))
+//          $item->attributes = $_POST['RefStores'][$i];
+//        $valid = $item->validate() && $valid;
+//      }
+//      if ($valid){}  // all items are valid
+//        
+//// ...do something here
+//    }
+//    // displays the view to collect tabular input
+//    $this->render('batchUpdate', array('items' => $items));
+//  }
 }

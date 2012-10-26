@@ -23,7 +23,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'removal_mark'); ?>
-		<?php echo $form->textField($model,'removal_mark'); ?>
+		<?php echo $form->checkbox($model,'removal_mark'); ?>
 	</div>
 
 	<div class="row">
@@ -58,7 +58,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'price_unvisible'); ?>
-		<?php echo $form->textField($model,'price_unvisible'); ?>
+		<?php echo $form->checkbox($model,'price_unvisible'); ?>
 	</div>
 
 	<div class="row buttons">
