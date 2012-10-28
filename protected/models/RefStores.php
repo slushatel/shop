@@ -18,7 +18,7 @@
 class RefStores extends CActiveRecord {
 
   public $store_imagesmall_id_path;
-
+  public $store_imagebig_id_path;
   /**
    * Returns the static model of the specified AR class.
    * @param string $className active record class name.
@@ -42,16 +42,16 @@ class RefStores extends CActiveRecord {
     // NOTE: you should only define rules for those attributes that
     // will receive user inputs.
     return array(
-        array('ref, name, store_address, store_phone, store_site_address', 'required'),
+        array('name, store_address, store_phone, store_site_address', 'required'),
         array('removal_mark, store_imagesmall_id, store_imagebig_id, price_unvisible', 'numerical', 'integerOnly' => true),
-        array('ref, store_phone', 'length', 'max' => 40),
+        array('store_phone', 'length', 'max' => 40),
         array('name, store_site_address', 'length', 'max' => 200),
         array('store_address', 'length', 'max' => 100),
         // The following rule is used by search().
         // Please remove those attributes that should not be searched.
         array('id, ref, removal_mark, name, store_imagesmall_id, store_imagebig_id, store_address, store_phone, store_site_address, price_unvisible', 'safe', 'on' => 'search'),
-        array('store_imagesmall_id_path', 'file', 'types' => 'jpg, gif, png'),
-        array('image', 'safe')
+        array('store_imagesmall_id_path, store_imagebig_id_path', 'file', 'types' => 'jpg, gif, png', 'allowEmpty' => true),
+        array('image, store_imagesmall_id_path, store_imagebig_id_path', 'safe'),
     );
   }
 
@@ -110,13 +110,39 @@ class RefStores extends CActiveRecord {
   }
 
   public function beforeSave() {
-    if ($file = CUploadedFile::getInstance($this, 'store_imagesmall_id_path')) {
-      //$this->image_name = $file->name;
-      //$this->image_type = $file->type;
-      //$this->image_size = $file->size;
-      $this->image = file_get_contents($file->tempName);
+    if (!isset($this->ref)) {
+      $connection = Yii::app()->db;
+      $sql = "select replace(UUID(),'-','')";
+      $command = $connection->createCommand($sql);
+      $this->ref = '006-' . $command->queryScalar();
     }
 
+    if ($file = CUploadedFile::getInstance($this, 'store_imagesmall_id_path')) {
+      //Yii::log('store_imagesmall_id_path');
+      $imageFile = new MyImage($file->tempName);
+      $imageFile->resizeImage(1, array('wmax' => 320, 'hmax' => 140));
+
+      $modelImage = new RefImages;
+      $modelImage->image = $imageFile->getImageData();
+
+      if ($modelImage->save()) {
+        $this->store_imagesmall_id = $modelImage->id;
+      }
+    }
+
+    if ($file = CUploadedFile::getInstance($this, 'store_imagebig_id_path')) {
+      //Yii::log('store_imagebig_id_path');
+      $imageFile = new MyImage($file->tempName);
+      $imageFile->resizeImage(1, array('wmax' => 600, 'hmax' => 450));
+
+      $modelImage = new RefImages;
+      $modelImage->image = $imageFile->getImageData();
+
+      if ($modelImage->save()) {
+        $this->store_imagebig_id = $modelImage->id;
+      }
+    }
+    
     return parent::beforeSave();
   }
 

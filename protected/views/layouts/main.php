@@ -32,6 +32,7 @@
 				array('label'=>Yii::t('zii', 'Home'), 'url'=>array('/site/index')),
 				//array('label'=>Yii::t('shop', 'About'), 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>Yii::t('shop', 'Users'), 'url'=>array('/refUsers')),
+				array('label'=>Yii::t('shop', 'Stores'), 'url'=>array('/refStores')),
 				array('label'=>Yii::t('shop', 'Login'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>Yii::t('shop', 'Logout'). ' ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

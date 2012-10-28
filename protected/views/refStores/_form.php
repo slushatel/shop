@@ -16,11 +16,11 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->labelEx($model,'ref'); ?>
 		<?php echo $form->textField($model,'ref',array('size'=>40,'maxlength'=>40)); ?>
 		<?php echo $form->error($model,'ref'); ?>
-	</div>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'removal_mark'); ?>
@@ -41,9 +41,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'store_imagebig_id'); ?>
-		<?php echo $form->textField($model,'store_imagebig_id'); ?>
-		<?php echo $form->error($model,'store_imagebig_id'); ?>
+		<?php echo $form->labelEx($model,'store_imagebig_id_path'); ?>
+		<?php echo $form->fileField($model,'store_imagebig_id_path'); ?>
+		<?php echo $form->error($model,'store_imagebig_id_path'); ?>
 	</div>
 
 	<div class="row">

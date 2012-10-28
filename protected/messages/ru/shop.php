@@ -3,6 +3,7 @@ return array (
   'About' => 'О сайте',
   //'The button type "{type}" is not supported.' => 'Тип кнопки "{type}" не поддерживается.',
   'Users' => 'Пользователи',
+  'Stores' => 'Магазины',
   'Login' => 'Войти',
   'Logout' => 'Выйти',
   'Search' => 'Найти',
