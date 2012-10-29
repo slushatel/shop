@@ -1,18 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "ref_images".
+ * This is the model class for table "reg_pay_data".
  *
- * The followings are the available columns in table 'ref_images':
- * @property string $id
- * @property string $image
+ * The followings are the available columns in table 'reg_pay_data':
+ * @property integer $store_id
+ * @property string $next_payment_date
  */
-class RefImages extends CActiveRecord
+class RegPayData extends CActiveRecord
 {
-	  /**
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return RefImages the static model class
+	 * @return RegPayData the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -24,7 +24,7 @@ class RefImages extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'ref_images';
+		return 'reg_pay_data';
 	}
 
 	/**
@@ -35,10 +35,11 @@ class RefImages extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('image', 'required'),
+			array('store_id, next_payment_date', 'required'),
+			array('store_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, image', 'safe', 'on'=>'search'),
+			array('store_id, next_payment_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,8 +60,8 @@ class RefImages extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'image' => 'Image',
+			'store_id' => 'Store',
+			'next_payment_date' => 'Next Payment Date',
 		);
 	}
 
@@ -75,8 +76,8 @@ class RefImages extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('image',$this->image,true);
+		$criteria->compare('store_id',$this->store_id);
+		$criteria->compare('next_payment_date',$this->next_payment_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
