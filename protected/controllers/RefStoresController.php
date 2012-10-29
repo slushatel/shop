@@ -63,6 +63,7 @@ class RefStoresController extends Controller
 	public function actionCreate()
 	{
 		$model=new RefStores;
+                $modelPayData = new RegPayData;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -70,12 +71,20 @@ class RefStoresController extends Controller
 		if(isset($_POST['RefStores']))
 		{
 			$model->attributes=$_POST['RefStores'];
-			if($model->save())
+                        if($model->save()){
+                                if(isset($_POST['RegPayData'])){
+                                  $modelPayData->attributes=$_POST['RegPayData'];
+                                  $modelPayData->store_id = $model->id;
+                                  $modelPayData->save();
+                                }
+                                
 				$this->redirect(array('view','id'=>$model->id));
+                        }
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'modelPayData'=>$modelPayData,
 		));
 	}
 
@@ -87,7 +96,11 @@ class RefStoresController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                $modelPayData=$this->loadModelPayData($id);
+                if($modelPayData==null){
+                  $modelPayData = new RegPayData;
+                } 
+                
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -95,11 +108,16 @@ class RefStoresController extends Controller
 		{
 			$model->attributes=$_POST['RefStores'];
 			if($model->save())
+                                if(isset($_POST['RegPayData'])){
+                                  $modelPayData->attributes=$_POST['RegPayData'];
+                                  $modelPayData->store_id = $model->id;
+                                  $modelPayData->save();
+                                }
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'modelPayData'=>$modelPayData,
 		));
 	}
 
@@ -156,6 +174,13 @@ class RefStoresController extends Controller
 		$model=RefStores::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+        public function loadModelPayData($id)
+	{
+		$model=RegPayData::model()->findByPk($id);
+//		if($model===null)
+//			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
 

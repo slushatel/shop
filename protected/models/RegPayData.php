@@ -37,6 +37,7 @@ class RegPayData extends CActiveRecord
 		return array(
 			array('store_id, next_payment_date', 'required'),
 			array('store_id', 'numerical', 'integerOnly'=>true),
+                        array('next_payment_date', 'date', 'format'=>'yyyy-MM-dd'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('store_id, next_payment_date', 'safe', 'on'=>'search'),

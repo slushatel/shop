@@ -14,7 +14,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model, $modelPayData); ?>
 
 <!--	<div class="row">
 		<?php echo $form->labelEx($model,'ref'); ?>
@@ -68,6 +68,11 @@
 		<?php echo $form->labelEx($model,'price_unvisible'); ?>
 		<?php echo $form->checkbox($model,'price_unvisible'); ?>
 		<?php echo $form->error($model,'price_unvisible'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($modelPayData,'next_payment_date'); ?>
+		<?php echo $form->textField($modelPayData,'next_payment_date'); ?>
+		<?php echo $form->error($modelPayData,'next_payment_date'); ?>
 	</div>
 
 	<div class="row buttons">
