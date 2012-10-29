@@ -52,6 +52,7 @@ class RefStores extends CActiveRecord {
         array('id, ref, removal_mark, name, store_imagesmall_id, store_imagebig_id, store_address, store_phone, store_site_address, price_unvisible', 'safe', 'on' => 'search'),
         array('store_imagesmall_id_path, store_imagebig_id_path', 'file', 'types' => 'jpg, gif, png', 'allowEmpty' => true),
         array('image, store_imagesmall_id_path, store_imagebig_id_path', 'safe'),
+		//array('pay_date','safe'),
     );
   }
 
@@ -62,6 +63,7 @@ class RefStores extends CActiveRecord {
     // NOTE: you may need to adjust the relation name and the related
     // class name for the relations automatically generated below.
     return array(
+        'payData'=>array(self::HAS_ONE, 'RegPayData', 'store_id'),
     );
   }
 
@@ -80,6 +82,7 @@ class RefStores extends CActiveRecord {
         'store_phone' => Yii::t('shop', 'Phone'),
         'store_site_address' => Yii::t('shop', 'Site'),
         'price_unvisible' => Yii::t('shop', 'Price unvisible'),
+        //'next_payment_date' => Yii::t('shop', 'Pay date'),
     );
   }
 
@@ -103,8 +106,11 @@ class RefStores extends CActiveRecord {
     $criteria->compare('store_phone', $this->store_phone, true);
     $criteria->compare('store_site_address', $this->store_site_address, true);
     $criteria->compare('price_unvisible', $this->price_unvisible);
-
-    return new CActiveDataProvider($this, array(
+	
+	//$criteria->with = array('payData');
+	//$criteria->compare('payData.next_payment_date', $this->payData, true);
+    
+	return new CActiveDataProvider($this, array(
                 'criteria' => $criteria,
             ));
   }

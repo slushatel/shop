@@ -18,5 +18,6 @@ return array (
   'Reference' => 'Ссылка',  
   'Phone' => 'Телефон',
   'Site' => 'Сайт',  
-  'Price unvisible' => 'Не показывать прайс',      
+  'Price unvisible' => 'Не показывать прайс',
+	'Next payment date' => 'Дата оплаты',
 );
