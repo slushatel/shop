@@ -133,7 +133,8 @@ class RefStoresController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new RefStores('search');
+		Yii::beginProfile('q');
+                $model=new RefStores('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['RefStores']))
 			$model->attributes=$_GET['RefStores'];
@@ -141,6 +142,8 @@ class RefStoresController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+                //$users = $model->findAll();
+                Yii::endProfile('q');
 	}
 
 	/**

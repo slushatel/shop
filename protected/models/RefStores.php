@@ -107,7 +107,9 @@ class RefStores extends CActiveRecord {
     $criteria->compare('store_site_address', $this->store_site_address, true);
     $criteria->compare('price_unvisible', $this->price_unvisible);
 	
-	//$criteria->with = array('payData');
+    //$criteria->select = array('*', "COALESCE(payData.next_payment_date, '') AS next_payment_date");
+    $criteria->with = array('payData');
+        
 	//$criteria->compare('payData.next_payment_date', $this->payData, true);
     
 	return new CActiveDataProvider($this, array(

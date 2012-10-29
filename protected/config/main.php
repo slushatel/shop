@@ -72,16 +72,22 @@ return array(
         'log' => array(
             'class' => 'CLogRouter',
             'routes' => array(
+//                'db' => array(
+//                    'class' => 'CWebLogRoute',
+//                    'categories' => 'system.db.CDbCommand',
+//                    //'showInFireBug' => true
+//                    ),
                 array(
                     'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning',
+                    'levels' => 'error, warning, profile',
                 ),
                 // uncomment the following to show log messages on web pages
-                array(
-                    'class' => 'CWebLogRoute',
-                    'categories' => 'application',
-                    'levels' => 'error, warning, trace, profile, info',
-                ),
+//                array(
+//                    'class' => 'CWebLogRoute',
+//                    'categories' => 'application',
+//                    //'categories' => 'system.db.CDbCommand',
+//                    'levels' => 'error, warning, trace, profile, info',
+//                ),
             ),
         ),
     ),

@@ -61,7 +61,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			//'name' => 'next_payment_date',
 			'header' => Yii::t('shop', 'Next payment date'),
-			'value' => '$data->payData->next_payment_date',
+			//'value' => '$data->payData->next_payment_date',
+                        'value' => '$data->payData == null?"":$data->payData->next_payment_date',
 			//'sortable' => true,
 		),
 		array(
